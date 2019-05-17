@@ -1,8 +1,8 @@
 module.exports = function(config) {
     return {
         dir: {
-          input: "app",
-          output: "src",
+          input: "src",
+          output: "app",
           includes: "templates"
         }
     }
