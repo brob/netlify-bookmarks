@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {% for link in bookmarks %}
+    {% for link in data.bookmarks %}
         <a href="{{link.url}}">{{link.title}}</a>
     {% endfor %}
 </body>
