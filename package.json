@@ -1,0 +1,28 @@
+{
+  "name": "netlify-bookmarks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@11ty/eleventy": "^0.8.3",
+    "cheerio": "^1.0.0-rc.3",
+    "google-spreadsheet": "^2.0.7",
+    "netlify-lambda": "^1.4.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx netlify lambda build lambda && npx eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brob/netlify-bookmarks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brob/netlify-bookmarks/issues"
+  },
+  "homepage": "https://github.com/brob/netlify-bookmarks#readme"
+}
