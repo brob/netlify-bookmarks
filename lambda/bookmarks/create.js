@@ -7,20 +7,19 @@ creds['private_key_id'] = process.env.private_key_id;
 var doc = new sheets('1OObbPDfBJoVinO7KLMvhQtrpPT1OQuI5lNw0_Pa94DA');
 
 async function createRow(value) {
-  console.log(value);
   return new Promise((resolve, reject) => {
-    console.log(value);
     let values = {
       url: value.url,
       pagetitle: value.pagetitle
     }
     let rows = doc.useServiceAccountAuth(creds,  function (err) {
       console.log(values);
-      resolve("resolved");
-      doc.addRow(1, values, function(err, row) {
-        if (row) console.log(row);
+      let row = doc.addRow(1, values, function(err, row) {
         if (err) console.log(err);
+        return row;
       });
+      resolve(`Added to ${row.id}`);
+
     });
   });
     
