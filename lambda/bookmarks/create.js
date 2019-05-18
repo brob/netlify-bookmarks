@@ -12,13 +12,12 @@ async function createRow(value) {
       url: value.url,
       pagetitle: value.pagetitle
     }
-    let rows = doc.useServiceAccountAuth(creds,  function (err) {
+    doc.useServiceAccountAuth(creds,  function (err) {
       console.log(values);
-      let row = doc.addRow(1, values, function(err, row) {
+      doc.addRow(1, values, function(err, row) {
         if (err) console.log(err);
-        return row;
       });
-      resolve(`Added to ${row.id}`);
+      resolve(`Added to Bookkmarks`);
 
     });
   });
