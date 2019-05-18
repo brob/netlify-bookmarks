@@ -12,7 +12,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx netlify-lambda build lambda && npx eleventy"
+    "build": "npx netlify-lambda build lambda; npx eleventy"
   },
   "repository": {
     "type": "git",
