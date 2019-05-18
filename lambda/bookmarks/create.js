@@ -16,8 +16,9 @@ async function createRow(value) {
       console.log(values);
       doc.addRow(1, values, function(err, row) {
         if (err) console.log(err);
+        resolve(`Added to Bookmarks ${row.id}`);
+
       });
-      resolve(`Added to Bookkmarks`);
 
     });
   });
