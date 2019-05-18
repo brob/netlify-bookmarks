@@ -2,6 +2,7 @@ const http = require("https");
 const cheerio = require('cheerio');
 const sheets = require('google-spreadsheet');
 const creds = require('./credentials.json');
+creds['private_key_id'] = process.env.private_key_id;
 
 var doc = new sheets('1OObbPDfBJoVinO7KLMvhQtrpPT1OQuI5lNw0_Pa94DA');
 
