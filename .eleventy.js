@@ -3,7 +3,8 @@ module.exports = function(config) {
         dir: {
           input: "src",
           output: "app",
-          includes: "templates"
+          includes: "templates",
+          data: "_data"
         }
     }
 

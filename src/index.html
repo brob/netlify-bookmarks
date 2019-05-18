@@ -7,8 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    {% for link in data.bookmarks %}
-        <a href="{{link.url}}">{{link.title}}</a>
+hi
+    <ul>
+    {% for link in bookmarks %}
+    {% if link.url and link.pagetitle %}
+        <li>
+            <a href="{{link.url}}">{{link.pagetitle}}</a>
+        </li>
+    {% endif %}
     {% endfor %}
+    </ul>
 </body>
 </html>
