@@ -13,6 +13,9 @@ hi
     {% if link.url and link.pagetitle %}
         <li>
             <a href="{{link.url}}">{{link.pagetitle}}</a>
+            {% if link.description != "" %}
+                <p>{{link.description}}</p>
+            {% endif %}
         </li>
     {% endif %}
     {% endfor %}
