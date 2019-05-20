@@ -19,12 +19,9 @@ async function getBookmarks() {
     return data;
 }
 
-module.exports =  function() {
-    getBookmarks()
-    .then(function(value) {
-        return value
-    })
-    .catch(function(err){
-        console.log(err);
-    });
+module.exports = async function() {
+    let data = await getBookmarks()
+    
+    return data
+    
 }
