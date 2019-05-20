@@ -12,7 +12,7 @@ body {
 }
 a {
     color: #309CD1;
-    transition: .3s ease-out;
+    transition: color .3s ease-out;
 }
 a:hover {
     color: #3ABEFF;
