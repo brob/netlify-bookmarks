@@ -15,7 +15,8 @@
     </section>
 
     <ul>
-    {% for link in bookmarks %}
+    {% assign links = bookmarks%}
+    {% for link in links %}
     {% if link.url and link.pagetitle %}
         <li>
             <h2><a href="{{link.url}}">{{link.pagetitle}}</a></h2>
