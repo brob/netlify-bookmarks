@@ -8,13 +8,11 @@ creds['private_key_id'] = process.env.private_key_id;
 var doc = new sheets('1OObbPDfBJoVinO7KLMvhQtrpPT1OQuI5lNw0_Pa94DA');
 
 function rebuildSite() {
-  let url = `https://api.netlify.com/build_hooks/5cdf706c5699e6018104541c`;
+  let url = `https://api.netlify.com/build_hooks/${process.env.build_hook_id}`;
 
-  
   return axios.post(url)
         .then(function() {
           console.log("posted and rebuilding");
-          resolve("Finished");
         })
         .catch(function(err) {
           console.log(err);
