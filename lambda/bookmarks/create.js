@@ -9,7 +9,7 @@ var doc = new sheets('1OObbPDfBJoVinO7KLMvhQtrpPT1OQuI5lNw0_Pa94DA');
 
 function rebuildSite() {
   let url = `https://api.netlify.com/build_hooks/${process.env.build_hook_id}`;
-
+  console.log(url);
   return axios.post(url)
         .then(function() {
           console.log("posted and rebuilding");
