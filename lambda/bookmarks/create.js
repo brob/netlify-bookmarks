@@ -32,7 +32,7 @@ async function createRow(value) {
         if (err) console.log(err);
         if (!err) rebuildSite();
 
-        resolve(`Added to Bookmarks ${row.id}`);
+        return resolve(`Added to Bookmarks ${row.id}`);
       });
 
     });
