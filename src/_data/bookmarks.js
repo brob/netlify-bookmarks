@@ -4,7 +4,7 @@ async function getBookmarks() {
     if (process.env.CONTEXT == "production") {
         var url = `https://brobmarks.netlify.com/.netlify/functions/bookmarks`;
     } else { 
-        var url = `http://localhost:34567/.netlify/functions/bookmarks`
+        var url = `http://localhost:9000/.netlify/functions/bookmarks`
     }
     console.log(`this is the url: ${url}`);
 
