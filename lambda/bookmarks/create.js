@@ -1,4 +1,4 @@
-const http = require("https");
+const rp = require('request-promise');
 const cheerio = require('cheerio');
 const sheets = require('google-spreadsheet');
 var axios   = require('axios');
@@ -15,7 +15,7 @@ function rebuildSite() {
           console.log("posted and rebuilding");
         })
         .catch(function(err) {
-          console.log(err);
+          // console.log(err);
         });
 }
 
@@ -32,7 +32,7 @@ async function createRow(value) {
         if (err) console.log(err);
         if (!err) rebuildSite();
 
-        return resolve(`Added to Bookmarks ${row.id}`);
+        resolve(`Added to Bookmarks ${row.id}`);
       });
 
     });
@@ -42,34 +42,25 @@ async function createRow(value) {
 }
 
 
-
-async function getDetails(parameters) {
-  const data = {
-    "url": parameters.url
-  };
-  return new Promise((resolve, reject) => {
-    http.get(parameters.url, function(res) {
-      res.on("data", function(html) {
-        const $ = cheerio.load(html);
-        const title = $('title').text();
-        const description = $('meta[name="description"]').attr('content');
-        data['pagetitle'] = title;
-        data['description'] = description;
-        resolve(data);
-      });
-    });
-  })
+function getDetails(html) {
+  const details = {};
+  const $ = cheerio.load(html);
+  details['pagetitle'] = $('title').text();
+  details['description'] = $('meta[name="description"]').attr('content');
+  return details
 }
+
 
 
 exports.handler = async function(event, context) {
     try {
-      var body = await getDetails(event.queryStringParameters)
-        .then((value) => {
-          // console.log(value);
-          return createRow(value);
-          // console.log(data);
-        });
+      const details = await rp(event.queryStringParameters.url)
+      .then((html) => getDetails(html))
+      .catch((err) => console.log(err));
+      
+
+      const body = await createRow({url: event.queryStringParameters.url, ...details})
+
       return { statusCode: 200, body };
     } catch (err) {
       return { statusCode: 500, body: err.toString() };
